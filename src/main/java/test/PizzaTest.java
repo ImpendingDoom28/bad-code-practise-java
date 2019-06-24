@@ -11,21 +11,23 @@ import static org.junit.Assert.*;
 public class PizzaTest {
 
     private static Pizza pizza;
+    private static Ingredient cheese;
 
     @BeforeClass
     public static void setUp() {
         pizza = new Pizza();
+        cheese = new Ingredient("Cheese");
     }
 
     @Test
     public void testAddIngredientOnCheese() {
-        Ingredient cheese = new Ingredient("Cheese");
         try {
             pizza.addIngredient(cheese, 1);
         } catch (PizzaException e) {
             e.printStackTrace();
         }
-        assertEquals(1, pizza.getIngredients().get(cheese).intValue());
+        int result = pizza.getIngredients().get(cheese);
+        assertEquals(1, result);
     }
 
     @Test
@@ -36,6 +38,7 @@ public class PizzaTest {
         } catch (PizzaException e) {
             e.printStackTrace();
         }
-        assertNull(pizza.getIngredients().get(cheese));
+        Integer result = pizza.getIngredients().get(cheese);
+        assertNull(result);
     }
 }
