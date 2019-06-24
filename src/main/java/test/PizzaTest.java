@@ -20,24 +20,16 @@ public class PizzaTest {
     }
 
     @Test
-    public void testAddIngredientOnCheese() {
-        try {
-            pizza.addIngredient(cheese, 1);
-        } catch (PizzaException e) {
-            e.printStackTrace();
-        }
+    public void testAddIngredientOnCheese() throws PizzaException {
+        pizza.addIngredient(cheese, 1);
         int result = pizza.getIngredients().get(cheese);
         assertEquals(1, result);
     }
 
     @Test
-    public void testRemoveIngredientOnCheese() {
+    public void testRemoveIngredientOnCheese() throws PizzaException {
         Ingredient cheese = new Ingredient("Cheese");
-        try {
-            pizza.removeIngredient(cheese, 1);
-        } catch (PizzaException e) {
-            e.printStackTrace();
-        }
+        pizza.removeIngredient(cheese, 1);
         Integer result = pizza.getIngredients().get(cheese);
         assertNull(result);
     }
